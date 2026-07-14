@@ -1,6 +1,6 @@
 {
   "name": "@nukleio/react",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "React user-data context and hooks for Nukleio",
   "license": "ISC",
   "author": "Eric Nohara-LeClair",
