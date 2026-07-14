@@ -1,0 +1,73 @@
+{
+  "userInfo": {
+    "email": "ada@example.com",
+    "name": "Ada Lovelace",
+    "bio": "Mathematician and computing pioneer.",
+    "current_position": "Analytical Engine Programmer",
+    "current_company": "Independent",
+    "phone_number": null,
+    "current_address": "London, UK",
+    "github_url": "https://github.com/example",
+    "linkedin_url": null,
+    "portrait_url": "https://cdn.example.com/ada.jpg",
+    "resume_url": "https://cdn.example.com/ada-resume.pdf",
+    "transcript_url": null,
+    "facebook_url": null,
+    "instagram_url": null,
+    "x_url": null,
+    "skills": [
+      {
+        "name": "Mathematics",
+        "proficiency": 10,
+        "years_of_experience": 12
+      }
+    ],
+    "experiences": [
+      {
+        "id": "exp_1",
+        "company": "Independent",
+        "job_title": "Mathematician",
+        "date_start": "1835-01-01",
+        "date_end": null,
+        "job_description": "Developed algorithms for the Analytical Engine."
+      }
+    ],
+    "projects": [
+      {
+        "name": "Note G",
+        "date_start": "1842-01-01",
+        "date_end": "1843-12-31",
+        "languages_used": ["Analytical notation"],
+        "frameworks_used": null,
+        "technologies_used": ["Analytical Engine"],
+        "description": "An algorithm for computing Bernoulli numbers.",
+        "github_url": null,
+        "demo_url": null,
+        "thumbnail_url": null
+      }
+    ],
+    "education": [
+      {
+        "degree": "Private study",
+        "majors": ["Mathematics"],
+        "minors": [],
+        "gpa": null,
+        "institution": "Home education",
+        "awards": [],
+        "year_start": 1828,
+        "year_end": 1835,
+        "courses": [
+          {
+            "name": "Advanced Mathematics",
+            "grade": null,
+            "description": "Tutored study with Augustus De Morgan."
+          }
+        ]
+      }
+    ],
+    "subscription": {
+      "status": "active",
+      "price_id": "price_example"
+    }
+  }
+}

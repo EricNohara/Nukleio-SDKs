@@ -1,0 +1,54 @@
+{
+  "name": "@nukleio/react",
+  "version": "0.1.0",
+  "description": "React user-data context and hooks for Nukleio",
+  "license": "ISC",
+  "author": "Eric Nohara-LeClair",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EricNohara/Nukleio-SDK.git",
+    "directory": "sdks/typescript/react"
+  },
+  "bugs": {
+    "url": "https://github.com/EricNohara/Nukleio-SDK/issues"
+  },
+  "homepage": "https://github.com/EricNohara/Nukleio-SDK#readme",
+  "keywords": [
+    "nukleio",
+    "react",
+    "context",
+    "portfolio",
+    "sdk"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsup src/index.ts --format esm,cjs --dts --clean --external react --external @nukleio/core",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@nukleio/core": "workspace:^"
+  },
+  "peerDependencies": {
+    "react": ">=18 <20"
+  }
+}

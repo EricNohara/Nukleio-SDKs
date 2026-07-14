@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <Version>0.1.0</Version>
+    <PackageId>Nukleio</PackageId>
+    <Title>Nukleio .NET SDK</Title>
+    <Description>Typed .NET client for the Nukleio public API</Description>
+    <Authors>Eric Nohara-LeClair</Authors>
+    <PackageLicenseExpression>ISC</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/EricNohara/Nukleio-SDK</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/EricNohara/Nukleio-SDK.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>nukleio;portfolio;api;sdk</PackageTags>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);1591</NoWarn>
+    <ContinuousIntegrationBuild Condition="'$(CI)' == 'true'">true</ContinuousIntegrationBuild>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="../../README.md" Pack="true" PackagePath="/" />
+  </ItemGroup>
+</Project>

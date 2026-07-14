@@ -1,0 +1,205 @@
+openapi: 3.1.0
+info:
+  title: Nukleio Public API
+  version: 1.0.0
+  description: Read-only API used by the official Nukleio SDKs.
+servers:
+  - url: https://portfolio-website-editor.vercel.app
+paths:
+  /api/public/getUserData:
+    get:
+      operationId: getUserData
+      summary: Get the portfolio data associated with an API key
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: header
+          name: X-Target-User-Id
+          required: false
+          description: Administrative target override. Normal user API keys should omit it.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: User data
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserDataResponse"
+        "401":
+          description: Missing, malformed, expired, or invalid API key
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: Nukleio API key
+  schemas:
+    NullableString:
+      type: [string, "null"]
+    ErrorResponse:
+      type: object
+      required: [message]
+      properties:
+        message:
+          type: string
+    UserDataResponse:
+      type: object
+      additionalProperties: false
+      required: [userInfo]
+      properties:
+        userInfo:
+          $ref: "#/components/schemas/UserData"
+    UserData:
+      type: object
+      additionalProperties: true
+      required:
+        - email
+        - name
+        - bio
+        - current_position
+        - current_company
+        - phone_number
+        - current_address
+        - github_url
+        - linkedin_url
+        - portrait_url
+        - resume_url
+        - transcript_url
+        - facebook_url
+        - instagram_url
+        - x_url
+        - skills
+        - experiences
+        - projects
+        - education
+        - subscription
+      properties:
+        email: { type: string, format: email }
+        name: { $ref: "#/components/schemas/NullableString" }
+        bio: { $ref: "#/components/schemas/NullableString" }
+        current_position: { $ref: "#/components/schemas/NullableString" }
+        current_company: { $ref: "#/components/schemas/NullableString" }
+        phone_number: { $ref: "#/components/schemas/NullableString" }
+        current_address: { $ref: "#/components/schemas/NullableString" }
+        github_url: { $ref: "#/components/schemas/NullableString" }
+        linkedin_url: { $ref: "#/components/schemas/NullableString" }
+        portrait_url: { $ref: "#/components/schemas/NullableString" }
+        resume_url: { $ref: "#/components/schemas/NullableString" }
+        transcript_url: { $ref: "#/components/schemas/NullableString" }
+        facebook_url: { $ref: "#/components/schemas/NullableString" }
+        instagram_url: { $ref: "#/components/schemas/NullableString" }
+        x_url: { $ref: "#/components/schemas/NullableString" }
+        skills:
+          type: array
+          items: { $ref: "#/components/schemas/Skill" }
+        experiences:
+          type: array
+          items: { $ref: "#/components/schemas/Experience" }
+        projects:
+          type: array
+          items: { $ref: "#/components/schemas/Project" }
+        education:
+          type: array
+          items: { $ref: "#/components/schemas/Education" }
+        subscription:
+          oneOf:
+            - $ref: "#/components/schemas/Subscription"
+            - type: "null"
+    Skill:
+      type: object
+      additionalProperties: true
+      required: [name, proficiency, years_of_experience]
+      properties:
+        name: { type: string }
+        proficiency: { type: [number, "null"] }
+        years_of_experience: { type: [number, "null"] }
+    Experience:
+      type: object
+      additionalProperties: true
+      required: [id, company, job_title, date_start, date_end, job_description]
+      properties:
+        id: { type: string }
+        company: { type: string }
+        job_title: { type: string }
+        date_start: { $ref: "#/components/schemas/NullableString" }
+        date_end: { $ref: "#/components/schemas/NullableString" }
+        job_description: { $ref: "#/components/schemas/NullableString" }
+    Project:
+      type: object
+      additionalProperties: true
+      required:
+        - name
+        - date_start
+        - date_end
+        - languages_used
+        - frameworks_used
+        - technologies_used
+        - description
+        - github_url
+        - demo_url
+        - thumbnail_url
+      properties:
+        name: { type: string }
+        date_start: { type: string }
+        date_end: { type: string }
+        languages_used:
+          type: [array, "null"]
+          items: { type: string }
+        frameworks_used:
+          type: [array, "null"]
+          items: { type: string }
+        technologies_used:
+          type: [array, "null"]
+          items: { type: string }
+        description: { type: string }
+        github_url: { $ref: "#/components/schemas/NullableString" }
+        demo_url: { $ref: "#/components/schemas/NullableString" }
+        thumbnail_url: { $ref: "#/components/schemas/NullableString" }
+    Education:
+      type: object
+      additionalProperties: true
+      required: [degree, majors, minors, gpa, institution, awards, year_start, year_end, courses]
+      properties:
+        degree: { type: string }
+        majors:
+          type: array
+          items: { type: string }
+        minors:
+          type: array
+          items: { type: string }
+        gpa: { type: [number, "null"] }
+        institution: { type: string }
+        awards:
+          type: array
+          items: { type: string }
+        year_start: { type: [integer, "null"] }
+        year_end: { type: [integer, "null"] }
+        courses:
+          type: array
+          items: { $ref: "#/components/schemas/Course" }
+    Course:
+      type: object
+      additionalProperties: true
+      required: [name, grade, description]
+      properties:
+        name: { type: string }
+        grade: { $ref: "#/components/schemas/NullableString" }
+        description: { $ref: "#/components/schemas/NullableString" }
+    Subscription:
+      type: object
+      additionalProperties: true
+      required: [status, price_id]
+      properties:
+        status: { $ref: "#/components/schemas/NullableString" }
+        price_id: { $ref: "#/components/schemas/NullableString" }

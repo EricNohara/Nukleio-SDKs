@@ -1,0 +1,79 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  typescript:
+    name: TypeScript and React
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: "24"
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm check
+      - name: Inspect npm package contents
+        run: |
+          pnpm --dir sdks/typescript/core pack --pack-destination "$RUNNER_TEMP"
+          pnpm --dir sdks/typescript/react pack --pack-destination "$RUNNER_TEMP"
+
+  python:
+    name: Python
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.13"
+          cache: pip
+          cache-dependency-path: sdks/python/pyproject.toml
+      - run: python -m unittest discover -s sdks/python/tests -v
+      - run: python -m pip install --upgrade build
+      - run: python -m build sdks/python
+
+  java:
+    name: Java
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: "21"
+          cache: maven
+      - run: mvn --batch-mode --file sdks/java/pom.xml verify
+
+  dotnet:
+    name: .NET
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: "8.0.x"
+      - run: dotnet test sdks/dotnet/tests/Nukleio.Tests/Nukleio.Tests.csproj --configuration Release
+      - run: dotnet pack sdks/dotnet/src/Nukleio/Nukleio.csproj --configuration Release --no-restore --output artifacts
+
+  go:
+    name: Go
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: sdks/go
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-go@v6
+        with:
+          go-version: "1.24.x"
+          cache-dependency-path: sdks/go/go.mod
+      - run: go test ./...
+      - run: go vet ./...

@@ -1,0 +1,30 @@
+name: Release .NET package
+
+on:
+  push:
+    tags:
+      - "dotnet-v*"
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    environment: nuget
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: "8.0.x"
+      - run: python scripts/verify_release_versions.py dotnet "$GITHUB_REF_NAME"
+      - run: dotnet test sdks/dotnet/tests/Nukleio.Tests/Nukleio.Tests.csproj --configuration Release
+      - run: dotnet pack sdks/dotnet/src/Nukleio/Nukleio.csproj --configuration Release --no-restore --output artifacts
+      - name: Exchange OIDC identity for a temporary NuGet API key
+        uses: NuGet/login@v1
+        id: nuget-login
+        with:
+          user: ${{ secrets.NUGET_USER }}
+      - name: Publish to nuget.org
+        run: dotnet nuget push artifacts/*.nupkg --api-key "${{ steps.nuget-login.outputs.NUGET_API_KEY }}" --source https://api.nuget.org/v3/index.json --skip-duplicate

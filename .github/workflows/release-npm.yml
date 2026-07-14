@@ -1,0 +1,48 @@
+name: Release npm packages
+
+on:
+  push:
+    tags:
+      - "npm-v*"
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    environment: npm
+    steps:
+      - uses: actions/checkout@v7
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: "24"
+          registry-url: https://registry.npmjs.org
+          package-manager-cache: false
+      - name: Use an npm CLI that supports trusted publishing
+        run: npm install --global npm@11
+      - run: python scripts/verify_release_versions.py npm "$GITHUB_REF_NAME"
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm check
+      - name: Publish @nukleio/core
+        working-directory: sdks/typescript/core
+        run: |
+          VERSION="${GITHUB_REF_NAME#npm-v}"
+          if npm view "@nukleio/core@$VERSION" version; then
+            echo "@nukleio/core@$VERSION is already published"
+          else
+            pnpm pack --pack-destination "$RUNNER_TEMP"
+            npm publish "$RUNNER_TEMP/nukleio-core-$VERSION.tgz" --access public
+          fi
+      - name: Publish @nukleio/react
+        working-directory: sdks/typescript/react
+        run: |
+          VERSION="${GITHUB_REF_NAME#npm-v}"
+          if npm view "@nukleio/react@$VERSION" version; then
+            echo "@nukleio/react@$VERSION is already published"
+          else
+            pnpm pack --pack-destination "$RUNNER_TEMP"
+            npm publish "$RUNNER_TEMP/nukleio-react-$VERSION.tgz" --access public
+          fi
