@@ -3,7 +3,7 @@
 Dependency-free Go client and typed models for the Nukleio public API.
 
 ```bash
-go get github.com/EricNohara/Nukleio-SDK/sdks/go
+go get github.com/EricNohara/Nukleio-SDKs/sdks/go
 ```
 
 ```go
@@ -14,7 +14,7 @@ import (
 	"log"
 	"os"
 
-	nukleio "github.com/EricNohara/Nukleio-SDK/sdks/go"
+	nukleio "github.com/EricNohara/Nukleio-SDKs/sdks/go"
 )
 
 func main() {

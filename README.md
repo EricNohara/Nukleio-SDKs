@@ -6,14 +6,14 @@ Official, small SDKs for reading a Nukleio user's public portfolio data with an 
 
 ## Packages
 
-| Ecosystem | Package | Source | Install |
-| --- | --- | --- | --- |
-| JavaScript / TypeScript | `@nukleio/core` | [`sdks/typescript/core`](sdks/typescript/core) | `npm install @nukleio/core` |
-| React | `@nukleio/react` | [`sdks/typescript/react`](sdks/typescript/react) | `npm install @nukleio/react @nukleio/core` |
-| Python | `nukleio` | [`sdks/python`](sdks/python) | `pip install nukleio` |
-| Java | `io.github.ericnohara:nukleio` | [`sdks/java`](sdks/java) | Maven or Gradle |
-| .NET | `Nukleio` | [`sdks/dotnet`](sdks/dotnet) | `dotnet add package Nukleio` |
-| Go | `github.com/EricNohara/Nukleio-SDK/sdks/go` | [`sdks/go`](sdks/go) | `go get github.com/EricNohara/Nukleio-SDK/sdks/go` |
+| Ecosystem               | Package                                      | Source                                           | Install                                             |
+| ----------------------- | -------------------------------------------- | ------------------------------------------------ | --------------------------------------------------- |
+| JavaScript / TypeScript | `@nukleio/core`                              | [`sdks/typescript/core`](sdks/typescript/core)   | `npm install @nukleio/core`                         |
+| React                   | `@nukleio/react`                             | [`sdks/typescript/react`](sdks/typescript/react) | `npm install @nukleio/react @nukleio/core`          |
+| Python                  | `nukleio`                                    | [`sdks/python`](sdks/python)                     | `pip install nukleio`                               |
+| Java                    | `io.github.ericnohara:nukleio`               | [`sdks/java`](sdks/java)                         | Maven or Gradle                                     |
+| .NET                    | `Nukleio`                                    | [`sdks/dotnet`](sdks/dotnet)                     | `dotnet add package Nukleio`                        |
+| Go                      | `github.com/EricNohara/Nukleio-SDKs/sdks/go` | [`sdks/go`](sdks/go)                             | `go get github.com/EricNohara/Nukleio-SDKs/sdks/go` |
 
 The canonical HTTP contract is [`specification/openapi.yaml`](specification/openapi.yaml), with a representative response in [`specification/fixtures/user-data.json`](specification/fixtures/user-data.json).
 

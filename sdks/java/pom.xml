@@ -9,7 +9,7 @@
   <version>0.1.0</version>
   <name>Nukleio Java SDK</name>
   <description>Typed Java client for the Nukleio public API</description>
-  <url>https://github.com/EricNohara/Nukleio-SDK</url>
+  <url>https://github.com/EricNohara/Nukleio-SDKs</url>
 
   <licenses>
     <license>
@@ -25,9 +25,9 @@
     </developer>
   </developers>
   <scm>
-    <connection>scm:git:https://github.com/EricNohara/Nukleio-SDK.git</connection>
-    <developerConnection>scm:git:ssh://git@github.com/EricNohara/Nukleio-SDK.git</developerConnection>
-    <url>https://github.com/EricNohara/Nukleio-SDK/tree/main</url>
+    <connection>scm:git:https://github.com/EricNohara/Nukleio-SDKs.git</connection>
+    <developerConnection>scm:git:ssh://git@github.com/EricNohara/Nukleio-SDKs.git</developerConnection>
+    <url>https://github.com/EricNohara/Nukleio-SDKs/tree/main</url>
     <tag>HEAD</tag>
   </scm>
 

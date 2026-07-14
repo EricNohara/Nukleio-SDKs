@@ -26,13 +26,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/EricNohara/Nukleio-SDK.git",
+    "url": "git+https://github.com/EricNohara/Nukleio-SDKs.git",
     "directory": "sdks/typescript/core"
   },
   "bugs": {
-    "url": "https://github.com/EricNohara/Nukleio-SDK/issues"
+    "url": "https://github.com/EricNohara/Nukleio-SDKs/issues"
   },
-  "homepage": "https://github.com/EricNohara/Nukleio-SDK#readme",
+  "homepage": "https://github.com/EricNohara/Nukleio-SDKs#readme",
   "keywords": [
     "nukleio",
     "portfolio",

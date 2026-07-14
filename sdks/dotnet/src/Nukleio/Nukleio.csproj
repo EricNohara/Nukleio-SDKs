@@ -9,8 +9,8 @@
     <Description>Typed .NET client for the Nukleio public API</Description>
     <Authors>Eric Nohara-LeClair</Authors>
     <PackageLicenseExpression>ISC</PackageLicenseExpression>
-    <PackageProjectUrl>https://github.com/EricNohara/Nukleio-SDK</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/EricNohara/Nukleio-SDK.git</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/EricNohara/Nukleio-SDKs</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/EricNohara/Nukleio-SDKs.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>nukleio;portfolio;api;sdk</PackageTags>
     <PackageReadmeFile>README.md</PackageReadmeFile>

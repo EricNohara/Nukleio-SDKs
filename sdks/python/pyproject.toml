@@ -24,9 +24,9 @@ classifiers = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/EricNohara/Nukleio-SDK"
-Repository = "https://github.com/EricNohara/Nukleio-SDK.git"
-Issues = "https://github.com/EricNohara/Nukleio-SDK/issues"
+Homepage = "https://github.com/EricNohara/Nukleio-SDKs"
+Repository = "https://github.com/EricNohara/Nukleio-SDKs.git"
+Issues = "https://github.com/EricNohara/Nukleio-SDKs/issues"
 
 [tool.setuptools.packages.find]
 where = ["src"]
