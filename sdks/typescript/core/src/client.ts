@@ -27,7 +27,9 @@ export class NukleioApiError extends Error {
   }
 }
 
-function assertUserDataResponse(value: unknown): asserts value is UserDataResponse {
+function assertUserDataResponse(
+  value: unknown,
+): asserts value is UserDataResponse {
   if (
     typeof value !== "object" ||
     value === null ||
@@ -35,7 +37,11 @@ function assertUserDataResponse(value: unknown): asserts value is UserDataRespon
     typeof value.userInfo !== "object" ||
     value.userInfo === null
   ) {
-    throw new NukleioApiError("Nukleio returned an invalid response body", 200, value);
+    throw new NukleioApiError(
+      "Nukleio returned an invalid response body",
+      200,
+      value,
+    );
   }
 }
 
@@ -73,9 +79,13 @@ export class NukleioClient {
       throw new TypeError("A non-empty Nukleio API key is required");
     }
 
-    const fetchImplementation = options.fetch ?? globalThis.fetch;
+    const fetchImplementation =
+      options.fetch ?? globalThis.fetch?.bind(globalThis);
+
     if (typeof fetchImplementation !== "function") {
-      throw new TypeError("This runtime does not provide fetch; pass a fetch implementation");
+      throw new TypeError(
+        "This runtime does not provide fetch; pass a fetch implementation",
+      );
     }
 
     this.apiKey = options.apiKey;
@@ -100,7 +110,11 @@ export class NukleioClient {
     const body = await readResponseBody(response);
 
     if (!response.ok) {
-      throw new NukleioApiError(errorMessage(body, response.status), response.status, body);
+      throw new NukleioApiError(
+        errorMessage(body, response.status),
+        response.status,
+        body,
+      );
     }
 
     assertUserDataResponse(body);

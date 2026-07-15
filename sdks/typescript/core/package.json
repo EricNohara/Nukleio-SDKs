@@ -1,6 +1,6 @@
 {
   "name": "@nukleio/core",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Dependency-free TypeScript client and data types for the Nukleio public API",
   "license": "ISC",
   "author": "Eric Nohara-LeClair",
