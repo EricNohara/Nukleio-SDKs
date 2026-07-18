@@ -169,7 +169,18 @@ components:
     Education:
       type: object
       additionalProperties: true
-      required: [degree, majors, minors, gpa, institution, awards, year_start, year_end, courses]
+      required:
+        [
+          degree,
+          majors,
+          minors,
+          gpa,
+          institution,
+          awards,
+          year_start,
+          year_end,
+          courses,
+        ]
       properties:
         degree: { type: string }
         majors:
@@ -178,7 +189,7 @@ components:
         minors:
           type: array
           items: { type: string }
-        gpa: { type: [number, "null"] }
+        gpa: { type: [number, string, "null"] }
         institution: { type: string }
         awards:
           type: array
