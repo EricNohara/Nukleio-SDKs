@@ -56,7 +56,7 @@ type Education struct {
 	Degree      string   `json:"degree"`
 	Majors      []string `json:"majors"`
 	Minors      []string `json:"minors"`
-	GPA         *float64 `json:"gpa"`
+	GPA         *string  `json:"gpa"`
 	Institution string   `json:"institution"`
 	Awards      []string `json:"awards"`
 	YearStart   *int     `json:"year_start"`

@@ -124,10 +124,22 @@ func (c *Client) getUserData(ctx context.Context, targetUserID string) (*UserDat
 	var envelope struct {
 		UserInfo *UserData `json:"userInfo"`
 	}
-	if err := json.Unmarshal(body, &envelope); err != nil || envelope.UserInfo == nil {
+
+	if err := json.Unmarshal(body, &envelope); err != nil {
 		return nil, &APIError{
-			Message: "Nukleio returned an invalid response body", StatusCode: response.StatusCode, Body: body,
+			Message:    fmt.Sprintf("Nukleio returned an invalid response body: %v", err),
+			StatusCode: response.StatusCode,
+			Body:       body,
 		}
 	}
+
+	if envelope.UserInfo == nil {
+		return nil, &APIError{
+			Message:    "Nukleio response did not contain userInfo",
+			StatusCode: response.StatusCode,
+			Body:       body,
+		}
+	}
+
 	return envelope.UserInfo, nil
 }
