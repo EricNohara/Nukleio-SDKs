@@ -21,6 +21,7 @@ public sealed class NukleioClientTests
 
         Assert.Equal("Ada Lovelace", user.Name);
         Assert.Equal("Mathematics", user.Skills[0].Name);
+        Assert.Equal("3.94", user.Education[0].Gpa);
         Assert.Equal("Bearer", handler.LastRequest!.Headers.Authorization!.Scheme);
         Assert.Equal("nk_test", handler.LastRequest.Headers.Authorization.Parameter);
         Assert.Equal("user_123", handler.LastRequest.Headers.GetValues("X-Target-User-Id").Single());

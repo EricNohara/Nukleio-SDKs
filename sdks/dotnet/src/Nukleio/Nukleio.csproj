@@ -3,7 +3,7 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <Version>0.1.0</Version>
+    <Version>0.1.1</Version>
     <PackageId>Nukleio</PackageId>
     <Title>Nukleio .NET SDK</Title>
     <Description>Typed .NET client for the Nukleio public API</Description>

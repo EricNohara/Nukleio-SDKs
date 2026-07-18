@@ -61,7 +61,7 @@ public sealed class Education
     public string Degree { get; init; } = string.Empty;
     public IReadOnlyList<string> Majors { get; init; } = [];
     public IReadOnlyList<string> Minors { get; init; } = [];
-    public double? Gpa { get; init; }
+    public string? Gpa { get; init; }
     public string Institution { get; init; } = string.Empty;
     public IReadOnlyList<string> Awards { get; init; } = [];
     public int? YearStart { get; init; }

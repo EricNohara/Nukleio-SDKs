@@ -67,10 +67,12 @@ public sealed class NukleioClient
                 ?? throw new NukleioApiException(
                     "Nukleio returned an invalid response body", (int)response.StatusCode, body);
         }
-        catch (JsonException)
+        catch (JsonException exception)
         {
             throw new NukleioApiException(
-                "Nukleio returned an invalid response body", (int)response.StatusCode, body);
+                $"Nukleio returned an invalid response body: {exception.Message}",
+                (int)response.StatusCode,
+                body);
         }
     }
 
